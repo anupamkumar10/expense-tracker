@@ -100,6 +100,44 @@ To also remove MongoDB volume data:
 docker compose down -v
 ```
 
+## Deploy on Render (Blueprint)
+
+This repo includes a root **`render.yaml`** for one-click Blueprint deployment.
+
+### Prerequisites
+
+1. Push the project to **GitHub**
+2. Create a free **MongoDB Atlas** cluster and copy your connection string
+3. A [Render](https://render.com) account
+
+### Steps
+
+1. In Render Dashboard → **New** → **Blueprint**
+2. Connect your GitHub repository
+3. Render reads `render.yaml` and creates:
+   - `smart-expense-api` (Node backend)
+   - `smart-expense-client` (static React frontend)
+4. When prompted, set:
+   - `MONGODB_URI` = your Atlas URI (e.g. `mongodb+srv://user:pass@cluster.mongodb.net/smart-expense-tracker`)
+   - `ADMIN_EMAIL` = email that should have admin role
+5. Wait for both services to deploy (first build may take a few minutes)
+
+### Your public links
+
+| Service | URL |
+|---------|-----|
+| **App (share this)** | `https://smart-expense-client.onrender.com` |
+| API | `https://smart-expense-api.onrender.com` |
+| Health check | `https://smart-expense-api.onrender.com/health` |
+
+> **Note:** Render free tier spins down after inactivity; first load may take ~30–60 seconds.
+
+### If auth/cookies fail after deploy
+
+1. Confirm `CLIENT_ORIGIN` on the API service is exactly: `https://smart-expense-client.onrender.com`
+2. Confirm `VITE_API_URL` on the client is exactly: `https://smart-expense-api.onrender.com`
+3. Redeploy the client after changing env vars (Vite bakes `VITE_*` at build time)
+
 ### Open the application
 
 Open this URL in your browser:

@@ -1,7 +1,5 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { AnimatedCounter } from './AnimatedCounter'
-import { heroStats } from './landingData'
 
 export function LandingHero() {
   return (
@@ -57,22 +55,6 @@ export function LandingHero() {
             <Link to="/login" className="btn-secondary">
               Sign in
             </Link>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="mt-10 grid gap-3 sm:grid-cols-3"
-          >
-            {heroStats.map((s) => (
-              <div key={s.label} className="glass-panel rounded-2xl p-4">
-                <div className="text-2xl font-bold text-white md:text-3xl">
-                  <AnimatedCounter value={s.value} suffix={s.suffix} />
-                </div>
-                <div className="mt-1 text-xs text-slate-400">{s.label}</div>
-              </div>
-            ))}
           </motion.div>
         </div>
 

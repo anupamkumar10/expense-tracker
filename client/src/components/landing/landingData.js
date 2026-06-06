@@ -1,9 +1,3 @@
-export const heroStats = [
-  { label: 'Transactions tracked', value: 2400000, suffix: '+' },
-  { label: 'Budget alerts sent', value: 180000, suffix: '+' },
-  { label: 'Hours saved monthly', value: 42000, suffix: '+' },
-]
-
 export const featureCards = [
   {
     title: 'Smart Expense Tracking',
